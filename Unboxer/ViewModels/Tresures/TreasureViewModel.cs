@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace Unboxer.ViewModels.Tresures
 {
     public partial class TreasureViewModel : ViewModelBase
     {
+        [ObservableProperty]
+        private int _count;
     }
+
 }

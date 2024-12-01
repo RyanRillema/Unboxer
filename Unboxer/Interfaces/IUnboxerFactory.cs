@@ -15,7 +15,7 @@ namespace Unboxer.Interfaces
 
         IEnumerable<TreasureViewModel> GenerateTreasures(int boost);
 
-        IEnumerable<DirtViewModel> GenerateDirt();
+        IList<DirtViewModel> GenerateDirt(int SiteCount);
 
     }
 }

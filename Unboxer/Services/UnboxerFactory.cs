@@ -14,30 +14,83 @@ namespace Unboxer.Services
     {
         private readonly ILogger _logger;
 
-        public UnboxerFactory(ILogger logger)
+        public UnboxerFactory()
         {
-            _logger = logger;
+            //_logger = logger;
         }
 
         public DigSiteViewModel GenerateDigSite()
-        {
-            var site = new DigSiteViewModel();
-            Random rnd = new Random();
-            AttackMelee.Count = rnd.Next(Min, Max + 1);
+        {           
 
-            return site;
-
-            throw new NotImplementedException();
+            return new DigSiteViewModel(this); 
         }
 
-        public IEnumerable<DirtViewModel> GenerateDirt()
+        public IList<DirtViewModel> GenerateDirt(int SiteCount)
         {
-            throw new NotImplementedException();
+            var dirtSites = new List<DirtViewModel>();
+            Random rnd = new Random();
+
+            for (int i = 0;i < SiteCount ;i++)
+            {
+                int rndNumber = rnd.Next(1, 10);
+
+                if (rndNumber < 5)
+                {
+                    // Soft dirt
+                    dirtSites.Add(new SoftDirtViewModel(this));
+                }
+                else
+                {
+                    //Hard dirt
+                    dirtSites.Add(new HardDirtViewModel(this));
+
+                }
+            }
+            return dirtSites;
         }
 
         public IEnumerable<TreasureViewModel> GenerateTreasures(int boost)
         {
-            throw new NotImplementedException();
+            var treasure = new List<TreasureViewModel>();
+            Random rnd = new Random();
+            int rndCount = 0;
+            int rndNumber = rnd.Next(1, 1000);
+
+            //Add boost
+            rndNumber = rndNumber + boost;
+
+            if (rndNumber < 200)
+            {
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new SkeletonViewModel(rndCount));
+
+            } else if (rndNumber < 400)
+            {
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new SkeletonViewModel(rndCount));
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new GemsViewModel(rndCount));
+            }
+            else if (rndNumber < 600)
+            {
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new SkeletonViewModel(rndCount));
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new GoldViewModel(rndCount));
+            }
+            else if (rndNumber < 800)
+            {
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new GemsViewModel(rndCount));
+                rndCount = rnd.Next(1, 10);
+                treasure.Add(new GoldViewModel(rndCount));
+            } else
+            {
+                rndCount = rnd.Next(10, 20);
+                treasure.Add(new GoldViewModel(rndCount));
+            }
+
+            return treasure;
         }
     }
 }
