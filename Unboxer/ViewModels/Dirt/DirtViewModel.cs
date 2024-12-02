@@ -9,5 +9,8 @@ namespace Unboxer.ViewModels.Dirt
     public partial class DirtViewModel : ViewModelBase
     {
 
+        public string Message { get; } = "Message";
     }
+
+   
 }

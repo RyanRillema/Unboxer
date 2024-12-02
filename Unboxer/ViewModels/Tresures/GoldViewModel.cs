@@ -8,6 +8,9 @@ namespace Unboxer.ViewModels.Tresures
 {
     public partial class GoldViewModel : TreasureViewModel
     {
+        public GoldViewModel(int Count)
+        {
 
+        }
     }
 }

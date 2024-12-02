@@ -6,6 +6,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using Unboxer.ViewModels;
 using Unboxer.Views;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace Unboxer;
 
@@ -18,6 +19,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var mainVM = Ioc.Default.GetService(typeof(MainViewModel)) as MainViewModel;
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -25,14 +28,14 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = mainVM
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
             singleViewPlatform.MainView = new MainView
             {
-                DataContext = new MainViewModel()
+                DataContext =  mainVM
             };
         }
 
