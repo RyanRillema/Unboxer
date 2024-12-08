@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="100" d:DesignHeight="100"
+             x:Class="Unboxer.Views.Dirt.SoftDirtView"
+             xmlns:vm="using:Unboxer.ViewModels.Dirt"
+             x:DataType="vm:SoftDirtViewModel"
+             xmlns:converters="using:Unboxer.Converters">
+  <Button Width="80" Height="80" Background="Beige" Command="{Binding DigCommand}">
+    <Button.Content>
+      <ItemsRepeater ItemsSource="{Binding Treasures}">
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate>
+            <Panel>
+              <!--<TextBlock Text="{Binding ., Converter={x:Static converters:TreasureNameConverter.Instance}}"/>-->
+              <Image Source="{Binding ., Converter={x:Static converters:TreasureImageConverter.Instance}}" />
+              <TextBlock Text="{Binding Count}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            </Panel>            
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+    </Button.Content>
+  </Button>
+</UserControl>

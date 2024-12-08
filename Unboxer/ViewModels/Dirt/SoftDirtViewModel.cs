@@ -15,5 +15,10 @@ namespace Unboxer.ViewModels.Dirt
         {
             _unboxerFactory = unboxerFactory;
         }
+
+        public override void PopulateTreasures()
+        {
+             Treasures.AddRange(_unboxerFactory.GenerateTreasures(0));
+        }
     }
 }

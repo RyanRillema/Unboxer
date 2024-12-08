@@ -17,7 +17,7 @@
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
               <DataTemplate>
-                <TextBlock Text="{Binding Message}" />
+                <ContentControl Content="{Binding .}" />
               </DataTemplate>
             </ItemsRepeater.ItemTemplate>
           </ItemsRepeater>
