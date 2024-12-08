@@ -9,6 +9,11 @@ namespace Unboxer.ViewModels.Tresures
 {
     public partial class TreasureViewModel : ViewModelBase
     {
+        public TreasureViewModel(int count)
+        {
+            Count = count;
+        }
+        
         [ObservableProperty]
         private int _count;
     }

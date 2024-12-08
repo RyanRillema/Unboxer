@@ -8,7 +8,7 @@ namespace Unboxer.ViewModels.Tresures
 {
     public partial class SkeletonViewModel : TreasureViewModel
     {
-        public SkeletonViewModel(int Count)
+        public SkeletonViewModel(int count) : base(count)
         {
 
         }
